@@ -17,35 +17,36 @@ public class MySQLTableCreation {
 				return;
 			}
 			
-			//step2 Drop tables in case they exist
+			// Step 2 Drop tables in case they exist.	
 			Statement stmt = conn.createStatement();
-			String sql = "DROP TABLE IF EXISTS items";
+			String sql = "DROP TABLE IF EXISTS categories";
 			stmt.executeUpdate(sql);
-			
-			sql = "DROP TABLE IF EXISTS users";
-			stmt.executeUpdate(sql);			
-			
-			sql = "DROP TABLE IF EXISTS categories";
-			stmt.executeUpdate(sql);			
 			
 			sql = "DROP TABLE IF EXISTS history";
 			stmt.executeUpdate(sql);
 			
-			//step 3 Create new table
-			sql = "CREATE TABLE items("
+			sql = "DROP TABLE IF EXISTS users";
+			stmt.executeUpdate(sql);
+			
+			sql = "DROP TABLE IF EXISTS items";
+			stmt.executeUpdate(sql);
+			
+			// Step 3 Create new tables
+			sql = "CREATE TABLE items ("
 					+ "item_id VARCHAR(255) NOT NULL,"
-					+ "name VARCAHR(255),"
+					+ "name VARCHAR(255),"
 					+ "rating FLOAT,"
 					+ "address VARCHAR(255),"
+					+ "image_url VARCHAR(255),"
 					+ "url VARCHAR(255),"
 					+ "distance FLOAT,"
 					+ "PRIMARY KEY (item_id)"
 					+ ")";
 			stmt.executeUpdate(sql);
 			
-			sql = "CREATE TABLE users("
+			sql = "CREATE TABLE users ("
 					+ "user_id VARCHAR(255) NOT NULL,"
-					+ "password VARCAHR(255) NOT NULL,"
+					+ "password VARCHAR(255) NOT NULL,"
 					+ "first_name VARCHAR(255),"
 					+ "last_name VARCHAR(255),"
 					+ "PRIMARY KEY (user_id)"
@@ -70,7 +71,7 @@ public class MySQLTableCreation {
 					+ ")";
 			stmt.executeUpdate(sql);
 			
-			//insert fake user 
+			// Step 4: insert fake user 1111/3229c1097c00d497a0fd282d586be050
 			sql = "INSERT INTO users VALUES ('1111', '3229c1097c00d497a0fd282d586be050', 'John', 'Smith')";
 			stmt.executeUpdate(sql);
 			

@@ -49,17 +49,17 @@ public class TicketMasterAPI {
 				JSONObject event = events.getJSONObject(i);
 				ItemBuilder builder = new ItemBuilder();
 				
+				if (!event.isNull(NAME)) {
+					builder.setName(event.getString(NAME));
+				}
 				if (!event.isNull(ID)) {
 					builder.setItemId(event.getString(ID));
 				}
-				if (!event.isNull(NAME)) {
-					builder.setItemId(event.getString(NAME));
+				if (!event.isNull(URL_STR)) {
+					builder.setUrl(event.getString(URL_STR));
 				}
 				if (!event.isNull(RATING)) {
 					builder.setRating(event.getDouble(RATING));
-				}
-				if (!event.isNull(URL_STR)) {
-					builder.setUrl(event.getString(URL_STR));
 				}
 				if (!event.isNull(DISTANCE)) {
 					builder.setDistance(event.getDouble(DISTANCE));
